@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row box">
+        
+        <div class="box-element col-md-4">
+            <h2 class="text-info ml-4">Expense Dashboard</h2><hr>
+            <div>
+                <a href="{% url 'addexpenseamount' %}"><button class="add-btn ml-3">Add Amount</button></a>
+                <a href="{% url 'manageexpense' %}"><button class="add-btn ml-3">Manage Expense</button></a>
+            </div>
+
+            <div class="mt-3 ml-3">
+                {% for p in add_expense %}
+                    <h6><strong>Title:</strong> {{ p.title }}</h6>
+                    <p><strong>Price:</strong> ₹{{ p.amount }}</p>
+                    <p><strong>Description:</strong> {{ p.description }}</p>
+                    <hr>
+                {% empty %}
+                    <p>No expense Yet.</p>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .box-element, col-md-7{
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        text-shadow: 5em;
+        box-shadow: hsl(0, 0%, 90%) 0 0 10px;
+        border-radius: 4px;
+        padding: 10px;
+    }
+    .box{
+        justify-content: center;
+        padding: 16px 16px 0;
+        min-height: 70vh;
+    }
+    .add-btn{
+        padding: 4px 24px;
+        background-color: rgb(71, 163, 83);
+        color: white;
+        border: none;
+    }
+    .add-btn:focus {outline:0;}
+    .vl{
+        border-left: 3px solid rgb(122, 122, 122);
+        height: 300px;
+        margin-left: 10px;
+    }
+    .inflow{
+        color: rgb(101, 255, 178);
+        margin-left: 14px;
+        margin-top: 90px;
+    }
+</style>
+
+{% endblock %}
+
+
+
+
+            <!--<div class="inflow col-md-4" style="float: left;">
+                <h5><strong>Inflow</strong></h5>
+            </div>
+            <div class="col-md-7" style="float: left;">
+                <p class="vl mt-3"></p>
+            </div>--->

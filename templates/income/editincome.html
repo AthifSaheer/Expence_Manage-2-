@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Manage Income{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row box">
+        <div class="box-element col-md-4">
+            <h4>Edit Here...</h4>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }} 
+                <button class="btn btn-outline-success btn-sm btn-block">Save Changes</button>
+            </form>
+            <a class="btn btn-outline-warning btn-sm btn-block mt-2" href="{% url 'manageincome' %}">Cancle</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .box-element, col-md-7{
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        text-shadow: 5em;
+        box-shadow: hsl(0, 0%, 90%) 0 0 10px;
+        border-radius: 4px;
+        padding: 10px;
+    }
+    .box{
+        justify-content: center;
+        padding: 16px 16px 0;
+        min-height: 70vh;
+    }
+</style>
+
+<script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+    
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    </script>
+{% endblock %}

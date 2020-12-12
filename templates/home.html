@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <h1 class="DashBoard">DashBoard</h1>
+    <div class="row box">
+        <div class="box-element col-md-3 ml-2">
+            <h3 style="color: indigo;" class="ml-5">Income</h3>
+            <hr style="background-color: rgb(92, 89, 89);">
+            
+            <p style="color: seagreen;"><u>Your Last Inflows:</u></p>
+            {% for h in add_amount %}
+                <p><strong>Title: </strong>{{ h.title }}</p>
+                <p><strong>Category: </strong>{{ h.category}}</p>
+                <p><strong>Price: </strong>{{ h.amount }}</p>
+                <p><strong>Date: </strong>{{ h.date }}</p>
+            {% endfor %}
+
+            <a href="{% url 'income' %}"><button class="btn btn-outline-info btn-sm btn-block">View More</button></a>
+        </div>
+        
+        <div class="box-element col-md-3 ml-2">
+            <h3 style="color: indigo;" class="ml-5">Expense</h3>
+            <hr style="background-color: rgb(92, 89, 89);">
+            <p><strong>Entertainment: </strong></p>
+            <p><strong>Family: </strong></p>
+            <p><strong>Bills & Utilities: </strong></p>
+            <p><strong>Health & Fitessn: </strong></p>
+            <a href="{% url 'expense' %}"><button class="btn btn-outline-info btn-sm btn-block">View More</button></a>
+        </div>
+
+        <div class="box-element col-md-3 ml-2">
+            <h3 style="color: indigo;" class="ml-5">Categories</h3>
+            <hr style="background-color: rgb(92, 89, 89);">
+            <button class="btn btn-outline-warning btn-block">Expense Category</button>
+            <button class="btn btn-outline-warning btn-block">Income Category</button>
+
+            <h3 style="color: indigo;" class="ml-5 mt-3">My Account</h3>
+            <hr style="background-color: rgb(92, 89, 89);">
+            <p><strong>Username: </strong>Lite_book</p>
+            <p><strong>Email: </strong>litebook@gmail.com</p>
+            <button class="btn btn-outline-danger btn-sm btn-block">Sign out</button>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .box-element{
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        text-shadow: 5em;
+        box-shadow: hsl(0, 0%, 85%) 0 0 10px;
+        border-radius: 4px;
+        padding: 10px;
+    }
+    .box{
+        justify-content: center;
+        padding: 16px 16px 0;
+        min-height: 70vh;
+    }
+    .ctgr-brnchs:hover {
+        background-color: yellow;
+        color: teal;
+    }
+    .DashBoard{
+        margin-left: 11em;
+        margin-top: 2px;
+        color: teal;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+</style>
+
+{% endblock %}

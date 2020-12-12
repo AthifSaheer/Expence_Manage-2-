@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row box">
+        
+        <div class="box-element col-md-10">
+            <div>
+                <h2 class="text-info ml-4" style="float: left;">Income Dashboard</h2>
+                <a href="{% url 'addincomeamount' %}"><button class="add-btn">Add Income</button></a>
+                <a href="{% url 'manageincome' %}"><button class="mng-btn">Manage Income</button></a>
+            </div>
+            <hr>
+            <div class="mt-3 ml-3">
+                <table class="table table-striped">
+                    <tr>
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>Amount</th>
+                        <th>Source</th>
+                    </tr>
+                    {% for amount in add_amount %}
+                    <tr>
+                        <td class="text-dark">{{ forloop.counter }}</td>
+                        <td class="text-success">{{ amount.title }}</td>
+                        <td class="text-warning"> ₹{{ amount.amount }}</td>
+                        <td class="text-info">By {{ amount.category }}</td>
+                    {% empty %}
+                        <td class="text-danger">No items Yet.</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .box-element, col-md-7{
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        text-shadow: 5em;
+        box-shadow: hsl(0, 0%, 90%) 0 0 10px;
+        border-radius: 4px;
+        padding: 10px;
+    }
+    .box{
+        justify-content: center;
+        padding: 16px 16px 0;
+        min-height: 70vh;
+    }
+    .add-btn{
+        padding: 4px 24px;
+        background-color:  rgb(64, 143, 153);
+        color: white;
+        border: none;
+        margin-top: 5px;
+        margin-left: 300px;
+    }
+    .add-btn:focus {outline:0;}
+    .mng-btn{
+        padding: 4px 24px;
+        background-color: rgb(64, 143, 153);
+        color: white;
+        border: none;
+        margin-top: 5px;
+        margin-left: px;
+    }
+    .mng-btn:focus {outline:0;}
+    .add-btn:hover, .mng-btn:hover{
+        background-color:   rgb(120, 201, 238);
+    }
+    .vl{
+        border-left: 3px solid rgb(122, 122, 122);
+        height: 300px;
+        margin-left: 10px;
+    }
+    .inflow{
+        color: rgb(101, 255, 178);
+        margin-left: 14px;
+        margin-top: 90px;
+    }
+</style>
+
+{% endblock %}
+
+
+
+            <!--<div class="inflow col-md-4" style="float: left;">
+                <h5><strong>Inflow</strong></h5>
+            </div>
+            <div class="col-md-7" style="float: left;">
+                <p class="vl mt-3"></p>
+            </div>--->

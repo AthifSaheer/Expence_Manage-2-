@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Expense Page{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row box">
+        <div class="box-element col-md-4">
+            <h4 id="header">Add your Expense Here......</h4>
+
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-info">Submit Data</button>
+            </form>
+              
+        </div>
+    </div>
+</div>
+
+<style>
+    .box-element, col-md-7{
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        text-shadow: 5em;
+        box-shadow: hsl(0, 0%, 90%) 0 0 10px;
+        border-radius: 4px;
+        padding: 10px;
+    }
+    .box{
+        justify-content: center;
+        padding: 16px 16px 0;
+        min-height: 70vh;
+    }
+</style>
+{% endblock %}

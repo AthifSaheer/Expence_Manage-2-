@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Amount Page{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row box">
+        <div class="box-element col-md-4">
+            <h4 id="header">Add your Amount Here......</h4>
+            <h4 class="heaqder text-warning">Add your Amount Here......</h4>
+
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-outline-info btn-sm btn-block">Submit Data</button>
+            </form>
+            <a href="{% url 'manageincome' %}"><button class="btn btn-outline-success btn-sm btn-block mt-2">Cancle</button></a>
+              
+        </div>
+    </div>
+</div>
+
+<style>
+    .box-element, col-md-7{
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        text-shadow: 5em;
+        box-shadow: hsl(0, 0%, 90%) 0 0 10px;
+        border-radius: 4px;
+        padding: 10px;
+    }
+    .box{
+        justify-content: center;
+        padding: 16px 16px 0;
+        min-height: 70vh;
+    }
+</style>
+<script>
+    document.getElementById("header").innerHTML = "Daily Expence"
+    document.getElementsByClassName("heaqder")[0].innerHTML = "Add your Amount Here..."
+</script>
+{% endblock %}

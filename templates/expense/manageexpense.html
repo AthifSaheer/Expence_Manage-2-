@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Income{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <table class="table table-striped mt-3">
+            <tr>
+                <th>No.</th>
+                <th>Title</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+            {% for e in add_expense %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ e.title }}</td>
+                <td>{{ e.amount }}</td>
+                <th class="">
+                    <a href="{% url 'editmanageexpense' e.id %}"><p class="btn btn-info btn-sm" onclick="edit()" style="width: 3em;">Edit</p></a>
+                    <a href="{% url 'deleteexpense' e.pk %}"><p class="btn btn-dark btn-sm" style="width: 4em;">Delete</p></a>              
+                </th>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+<script>
+    function edit(){
+        document.getElementById("dt").style.display = "block";
+    }
+
+    function cls(){
+        document.getElementById("dt").style.display = "none";
+      }
+</script>
+{% endblock %}

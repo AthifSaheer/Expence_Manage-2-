@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row box">
+
+        <div class="box-element">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <h2>Are you sure you want to delete? "{{ object }}"</h2>
+                <h1 class="mt-4"></h1>
+                <button class="btn btn-outline-success btn-block">Yah</button>
+            </form>
+            <a href="{% url 'manageexpense' %}"><button class="btn btn-outline-info btn-block mt-2">Nop</button></a>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .box-element{
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        text-shadow: 5em;
+        box-shadow: hsl(0, 0%, 79%) 0 0 10px;
+        border-radius: 4px;
+        padding: 10px;
+    }
+    .box{
+        justify-content: center;
+        padding: 16px 16px 0;
+        min-height: 55vh;
+    }
+</style>
+{% endblock %}
