@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Home Page{% endblock %}
+{% block title %}Expence Dashborad{% endblock %}
 
 {% block content %}
 
@@ -8,22 +8,33 @@
 <div class="container">
     <div class="row box">
         
-        <div class="box-element col-md-4">
-            <h2 class="text-info ml-4">Expense Dashboard</h2><hr>
+        <div class="box-element col-md-10">
             <div>
-                <a href="{% url 'addexpenseamount' %}"><button class="add-btn ml-3">Add Amount</button></a>
-                <a href="{% url 'manageexpense' %}"><button class="add-btn ml-3">Manage Expense</button></a>
+                <h2 class="text-info ml-4" style="float: left;">Expense Dashboard</h2>
+                <a href="{% url 'addexpenseamount' %}"><button class="add-btn">Add Expense</button></a>
+                <a href="{% url 'manageexpense' %}"><button class="mng-btn">Manage Expense</button></a>
             </div>
-
+            <hr>
             <div class="mt-3 ml-3">
-                {% for p in add_expense %}
-                    <h6><strong>Title:</strong> {{ p.title }}</h6>
-                    <p><strong>Price:</strong> ₹{{ p.amount }}</p>
-                    <p><strong>Description:</strong> {{ p.description }}</p>
-                    <hr>
-                {% empty %}
-                    <p>No expense Yet.</p>
-                {% endfor %}
+                <table class="table table-striped">
+                    <tr>
+                        <th>No.</th>
+                        <th>Title</th>
+                        <th>Amount</th>
+                        <th>Source</th>
+                    </tr>
+                    {% for amount in add_expense %}
+                    <tr>
+                        <td class="text-dark">{{ forloop.counter }}</td>
+                        <td class="text-success">{{ amount.title }}</td>
+                        <td class="text-warning"> ₹{{ amount.amount }}</td>
+                        <td class="text-info">By {{ amount.category }}</td>
+                    {% empty %}
+                        <td class="text-danger">No items Yet.</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                
             </div>
 
         </div>
@@ -46,11 +57,25 @@
     }
     .add-btn{
         padding: 4px 24px;
-        background-color: rgb(71, 163, 83);
+        background-color:  rgb(64, 143, 153);
         color: white;
         border: none;
+        margin-top: 5px;
+        margin-left: 280px;
     }
     .add-btn:focus {outline:0;}
+    .mng-btn{
+        padding: 4px 24px;
+        background-color: rgb(64, 143, 153);
+        color: white;
+        border: none;
+        margin-top: 5px;
+        margin-left: px;
+    }
+    .mng-btn:focus {outline:0;}
+    .add-btn:hover, .mng-btn:hover{
+        background-color:   rgb(13, 97, 136);
+    }
     .vl{
         border-left: 3px solid rgb(122, 122, 122);
         height: 300px;

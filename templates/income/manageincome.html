@@ -11,6 +11,7 @@
                 <th>No.</th>
                 <th>Title</th>
                 <th>Amount</th>
+                <th>Source</th>
                 <th>Action</th>
             </tr>
             {% for i in add_amount_db %}
@@ -18,6 +19,7 @@
                 <td>{{ forloop.counter }}</td>
                 <td>{{ i.title }}</td>
                 <td>{{ i.amount }}</td>
+                <td>By {{ i.category }}</td>
                 <th class="">
                     <a href="{% url 'editmanageincome' i.id %}"><p class="btn btn-info btn-sm" onclick="edit()" style="width: 3em;">Edit</p></a>
                     <a href="{% url 'deleteincome' i.pk %}"><p class="btn btn-dark btn-sm" style="width: 4em;">Delete</p></a>              

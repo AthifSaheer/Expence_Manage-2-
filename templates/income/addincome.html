@@ -7,15 +7,16 @@
 <div class="container">
     <div class="row box">
         <div class="box-element col-md-4">
-            <h4 id="header">Add your Amount Here......</h4>
-            <h4 class="heaqder text-warning">Add your Amount Here......</h4>
+            <h4 id="header-one">Add your Amount Here......</h4>
+            <h4 class="header text-danger">Add your Amount Here......</h4>
+            <hr>
 
             <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button class="btn btn-outline-info btn-sm btn-block">Submit Data</button>
             </form>
-            <a href="{% url 'manageincome' %}"><button class="btn btn-outline-success btn-sm btn-block mt-2">Cancle</button></a>
+            <a href="{% url 'income' %}"><button class="btn btn-outline-success btn-sm btn-block mt-2">Cancle</button></a>
               
         </div>
     </div>
@@ -37,7 +38,7 @@
     }
 </style>
 <script>
-    document.getElementById("header").innerHTML = "Daily Expence"
-    document.getElementsByClassName("heaqder")[0].innerHTML = "Add your Amount Here..."
+    document.getElementById("header-one").innerHTML = ""
+    document.getElementsByClassName("header")[0].innerHTML = "Add your Income Here..."
 </script>
 {% endblock %}

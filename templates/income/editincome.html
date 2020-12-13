@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 
-{% block title %}Edit Manage Income{% endblock %}
+{% block title %}Edit Income{% endblock %}
 
 {% block content %}
 
 <div class="container">
     <div class="row box">
         <div class="box-element col-md-4">
-            <h4>Edit Here...</h4>
+            <h4 class="text-primary">Edit Here...</h4>
+            <hr>
             <form action="" method="POST">
                 {% csrf_token %}
                 {{ form.as_p }} 

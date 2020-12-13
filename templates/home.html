@@ -12,7 +12,7 @@
             <h3 style="color: indigo;" class="ml-5">Income</h3>
             <hr style="background-color: rgb(92, 89, 89);">
             
-            <p style="color: seagreen;"><u>Your Last Inflows:</u></p>
+            <p style="color: seagreen;"><u>Last Inflow:</u></p>
             {% for h in add_amount %}
                 <p><strong>Title: </strong>{{ h.title }}</p>
                 <p><strong>Category: </strong>{{ h.category}}</p>
@@ -26,10 +26,16 @@
         <div class="box-element col-md-3 ml-2">
             <h3 style="color: indigo;" class="ml-5">Expense</h3>
             <hr style="background-color: rgb(92, 89, 89);">
-            <p><strong>Entertainment: </strong></p>
-            <p><strong>Family: </strong></p>
-            <p><strong>Bills & Utilities: </strong></p>
-            <p><strong>Health & Fitessn: </strong></p>
+            <p style="color: seagreen;"><u>Last Outflow:</u></p>
+
+            {% for k in expense %}
+            <p><strong>Title: </strong>{{ k.title }}</p>
+            <p><strong>Category: </strong>{{ k.category}}</p>
+            <p><strong>Price: </strong>{{ k.amount }}</p>
+            <p><strong>Date: </strong>{{ k.date_time }}</p>
+            {% empty %}
+            <p>No Outflows</p>
+            {% endfor %}
             <a href="{% url 'expense' %}"><button class="btn btn-outline-info btn-sm btn-block">View More</button></a>
         </div>
 

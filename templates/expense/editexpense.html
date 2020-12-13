@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
 
-{% block title %}Edit Manage Income{% endblock %}
+{% block title %}Edit Expense{% endblock %}
 
 {% block content %}
 
 <div class="container">
     <div class="row box">
         <div class="box-element col-md-4">
-            <h4>Edit Here...</h4>
-            <form action="" method="POST" id="dt" enctype="multipart/form-data">
+            <h4 class="text-primary">Edit Here...</h4>
+            <hr>
+            <form action="" method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button class="btn btn-info">Submit Data</button>
-                <button class="btn-sm btn btn-warning" onclick="cls()">Close</button>
+                <button class="btn btn-outline-success btn-sm btn-block">Save Changes</button>
             </form>
+            <a class="btn btn-outline-warning btn-sm btn-block mt-2" href="{% url 'manageexpense' %}">Cancle</a>
         </div>
     </div>
 </div>

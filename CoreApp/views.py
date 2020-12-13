@@ -12,8 +12,10 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         a = AddAmount.objects.filter(id=9)
-        x = AddAmount.objects.all().order_by("-id")[:1]
-        context['add_amount'] = x
+        income = AddAmount.objects.all().order_by("-id")[:1]
+        expense = AddExpense.objects.all().order_by("-id")[:1]
+        context['add_amount'] = income
+        context['expense'] = expense
         return context
 
 #Income View
@@ -47,7 +49,7 @@ class EditIncome(UpdateView):
     template_name = "income/editincome.html"
     get_object_name = "changeincome"
     model = AddAmount
-    fields = ('title', 'category', 'amount',)
+    fields = ('title', 'amount', 'category')
 
     def get_success_url(self):
         return reverse_lazy('manageincome')
@@ -89,15 +91,16 @@ class ManageExpense(TemplateView):
         return context
 
 
-class EditExpense(TemplateView):
+class EditExpense(UpdateView):
     template_name = "expense/editexpense.html"
+    get_object_name = "changeexpense"
+    model = AddExpense
+    fields = ("title", "amount", "category")
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['add_expense_db'] = AddExpense.objects.all()
-        return context
+    def get_success_url(self):
+        return reverse_lazy("manageexpense")
 
 class DeleteExpense(DeleteView):
     template_name = "expense/confirm_delete.html"
     model = AddExpense
-    success_url = "/"
+    success_url = "/manage-expense"

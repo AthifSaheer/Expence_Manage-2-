@@ -18,6 +18,6 @@ urlpatterns = [
     #Expense Branches
     path('add-expense-amount', AddExpenseView.as_view(), name="addexpenseamount"),
     path('manage-expense', ManageExpense.as_view(), name="manageexpense"),
-    path('edit-manage-expense/<int:id>/', EditExpense.as_view(), name="editmanageexpense"),
+    path('edit-manage-expense/<int:pk>/', EditExpense.as_view(), name="editmanageexpense"),
     path('delete-expense/<int:pk>/', DeleteExpense.as_view(), name="deleteexpense"),
     ]

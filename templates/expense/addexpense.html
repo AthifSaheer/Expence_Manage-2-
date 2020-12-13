@@ -7,14 +7,14 @@
 <div class="container">
     <div class="row box">
         <div class="box-element col-md-4">
-            <h4 id="header">Add your Expense Here......</h4>
-
+            <h4 class="text-danger">Add your Expense Here......</h4>
+            <hr>
             <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button class="btn btn-info">Submit Data</button>
+                <button class="btn btn-outline-info btn-sm btn-block">Submit Data</button>
             </form>
-              
+            <a href="{% url 'expense' %}"><button class="btn btn-outline-success btn-sm btn-block mt-2">Cancle</button></a>              
         </div>
     </div>
 </div>

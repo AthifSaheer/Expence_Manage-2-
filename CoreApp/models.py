@@ -14,7 +14,7 @@ class ExpenseCat(models.Model):
         return self.title
 
 class AddAmount(models.Model):
-    title = models.CharField(max_length=100, blank=True, null=True)
+    title = models.CharField(max_length=100, blank=False, null=False)
     category = models.ForeignKey(IncomeCat, on_delete=models.CASCADE)
     amount = models.PositiveIntegerField()
     date = models.DateTimeField(default=datetime.now)
@@ -23,7 +23,7 @@ class AddAmount(models.Model):
         return self.title + " | " + self.category.title
 
 class AddExpense(models.Model):
-    title = models.CharField(max_length=100, blank=True, null=True)
+    title = models.CharField(max_length=100, blank=False, null=False)
     category = models.ForeignKey(ExpenseCat, on_delete=models.CASCADE)
     amount = models.PositiveIntegerField()
     date_time = models.DateTimeField(default=datetime.now)

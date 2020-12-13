@@ -20,9 +20,11 @@ class AddAmountForm(forms.ModelForm):
         }
 
 class AddExpenseForm(forms.ModelForm):
+    category : forms.ChoiceField()
+
     class Meta:
         model = AddExpense
-        fields = ["title", "amount",]
+        fields = ["title", "amount", "category"]
 
         widgets = {
             "title" : forms.TextInput(attrs={
@@ -33,8 +35,4 @@ class AddExpenseForm(forms.ModelForm):
                 "class":"form-control",
                 "placeholder":"Amount",
             }),
-            "description" : forms.TextInput(attrs={
-                "class":"form-control",
-                "placeholder":"Description",
-            })
         }
