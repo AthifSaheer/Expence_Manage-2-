@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="box-element col-md-10 mt-5 ml-5">
+            <h4 style="color: palevioletred;">Signup</h4>
+            <hr>
+            
+            <form method="post" action="">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Signup" class="btn btn-outline-success btn-md btn-block">
+            </form>                
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .box-element{
+        background-color: #f8f9fa;
+        color: rgb(0, 0, 0);
+        text-shadow: 5em;
+        box-shadow: hsl(0, 0%, 85%) 0 0 10px;
+        border-radius: 4px;
+        padding: 10px;
+    }
+    .box{
+        justify-content: center;
+        padding: 16px 16px 0;
+        min-height: 70vh;
+    }
+</style>
+{% endblock %}

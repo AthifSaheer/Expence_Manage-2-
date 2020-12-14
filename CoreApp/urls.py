@@ -20,4 +20,8 @@ urlpatterns = [
     path('manage-expense', ManageExpense.as_view(), name="manageexpense"),
     path('edit-manage-expense/<int:pk>/', EditExpense.as_view(), name="editmanageexpense"),
     path('delete-expense/<int:pk>/', DeleteExpense.as_view(), name="deleteexpense"),
+
+    #authentication
+    path('signup', SignupView.as_view(), name="signup"),
+    path('login', LoginView.as_view(), name="login"),
     ]
