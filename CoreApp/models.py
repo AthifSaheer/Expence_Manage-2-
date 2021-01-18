@@ -1,5 +1,8 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import User
+
+#authentication
 
 class IncomeCat(models.Model):
     title = models.CharField(max_length=100, blank=False, null=False)
@@ -30,6 +33,13 @@ class AddExpense(models.Model):
 
     def __str__(self):
         return self.title + " | " + self.category.title
+
+class Graph(models.Model):
+    income = models.ForeignKey(AddAmount, on_delete=models.CASCADE)
+    expense = models.ForeignKey(AddExpense, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.income
 
 """
 class TotalIncome(models.Model):

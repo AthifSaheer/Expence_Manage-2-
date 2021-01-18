@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} Login Page {% endblock %}
+
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button>Submit</button>
+    </form>
+    <a href="{% url 'signup' %}">I have Not a Acoount?</a>
+    <h1 style="color: purple; text-align: center;">Athif</h1>
+
+    <script>
+        let a = 10;
+        let b = 20;
+        let r = a + b;
+        console.log(`THe num is ${r}`)
+
+        const x = document.querySelector('h1')
+        console.log(x)
+        x.innerHTML = "Dinner Dinner Chicken Dinner !!"
+    </script>
+{% endblock %}

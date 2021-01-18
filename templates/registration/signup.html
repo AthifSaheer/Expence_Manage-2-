@@ -3,17 +3,38 @@
 {% block title %}Signup{% endblock %}
 
 {% block content %}
-<div class="container">
+    <h1>Signup Here........</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Submit</button>
+    </form>
+    {{form.Username}}
+
+<style>
+    ul {
+        color: red;
+    }
+    .helptext {
+        color: red;
+    }
+</style>
+{% endblock %}
+
+
+<!--
+    <div class="container">
     <div class="row">
         <div class="box-element col-md-10 mt-5 ml-5">
             <h4 style="color: palevioletred;">Signup</h4>
             <hr>
             
-            <form method="post" action="">
+            <form action="" method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <input type="submit" value="Signup" class="btn btn-outline-success btn-md btn-block">
-            </form>                
+            </form>
+            <a href="{% url 'login' %}">Already have an account !</a>
 
         </div>
     </div>
@@ -33,5 +54,8 @@
         padding: 16px 16px 0;
         min-height: 70vh;
     }
+    .errorlist{
+        color: red;
+    }
 </style>
-{% endblock %}
+-->

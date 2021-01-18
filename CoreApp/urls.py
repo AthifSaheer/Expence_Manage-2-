@@ -21,7 +21,5 @@ urlpatterns = [
     path('edit-manage-expense/<int:pk>/', EditExpense.as_view(), name="editmanageexpense"),
     path('delete-expense/<int:pk>/', DeleteExpense.as_view(), name="deleteexpense"),
 
-    #authentication
-    path('signup', SignupView.as_view(), name="signup"),
-    path('login', LoginView.as_view(), name="login"),
+    path("graph/", GraphView.as_view(), name="graph")
     ]

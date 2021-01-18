@@ -1,31 +1,9 @@
+from django.views.generic.edit import UpdateView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import *
-from django.views.generic.edit import UpdateView
-from django.contrib.auth.models import User
 from .forms import *
 from .models import *
-
-#Authentication
-class SignupView(CreateView):
-    template_name = "auth/signup.html"
-    form_class = SignupForm
-    success_url = "/"
-
-    def form_valid(self, form):
-        user = form.save()
-        return super().form_valid(form)
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = SignupForm
-        return context
-
-class LoginView(FormView):
-    template_name = "auth/login.html"
-    form_class = LoginForm
-    model = User
-    success_url = "/"
 
 #DashBoard / Home
 class HomeView(TemplateView):
@@ -39,6 +17,19 @@ class HomeView(TemplateView):
         context['add_amount'] = income
         context['expense'] = expense
         return context
+
+class GraphView(TemplateView):
+    template_name = "graph.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        a = AddAmount.objects.filter(id=9)
+        income = AddAmount.objects.all()
+        expense = AddExpense.objects.all()
+        context['add_amount'] = income
+        context['expense'] = expense
+        return context
+
 
 #Income View
 class IncomeView(TemplateView):

@@ -8,43 +8,60 @@
 <div class="container">
     <h1 class="DashBoard">DashBoard</h1>
     <div class="row box">
-        <div class="box-element col-md-3 ml-2">
+        <div class="box-element col-md-5 ml-2">
             <h3 style="color: indigo;" class="ml-5">Income</h3>
             <hr style="background-color: rgb(92, 89, 89);">
             
             <p style="color: seagreen;"><u>Last Inflow:</u></p>
             {% for h in add_amount %}
-                <p><strong>Title: </strong>{{ h.title }}</p>
-                <p><strong>Category: </strong>{{ h.category}}</p>
-                <p><strong>Price: </strong>{{ h.amount }}</p>
-                <p><strong>Date: </strong>{{ h.date }}</p>
+            <table class="table">
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                </tr>
+                <tr>
+                    <td>{{ h.title }}</td>
+                    <td>{{ h.category}}</td>
+                    <td>{{ h.amount }}</td>
+                    <td>{{ h.date }}</td>
+                </tr>
+            </table>
+            {% empty %}
+            <p>No Inflows</p>
             {% endfor %}
 
-            <a href="{% url 'income' %}"><button class="btn btn-outline-info btn-sm btn-block">View More</button></a>
+            <a href="{% url 'income' %}"><button class="btn btn-outline-info btn-sm btn-block atag">View More</button></a>
         </div>
-        
-        <div class="box-element col-md-3 ml-2">
+
+        <div class="box-element col-md-5 ml-2">
             <h3 style="color: indigo;" class="ml-5">Expense</h3>
             <hr style="background-color: rgb(92, 89, 89);">
             <p style="color: seagreen;"><u>Last Outflow:</u></p>
 
-            {% for k in expense %}
-            <p><strong>Title: </strong>{{ k.title }}</p>
-            <p><strong>Category: </strong>{{ k.category}}</p>
-            <p><strong>Price: </strong>{{ k.amount }}</p>
-            <p><strong>Date: </strong>{{ k.date_time }}</p>
+            {% for h in expense %}
+            <table class="table">
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                </tr>
+                <tr>
+                    <td>{{ h.title }}</td>
+                    <td>{{ h.category}}</td>
+                    <td>{{ h.amount }}</td>
+                    <td>{{ h.date_time }}</td>
+                </tr>
+            </table>
             {% empty %}
             <p>No Outflows</p>
             {% endfor %}
             <a href="{% url 'expense' %}"><button class="btn btn-outline-info btn-sm btn-block">View More</button></a>
         </div>
 
-        <div class="box-element col-md-3 ml-2">
-            <h3 style="color: indigo;" class="ml-5">Categories</h3>
-            <hr style="background-color: rgb(92, 89, 89);">
-            <button class="btn btn-outline-warning btn-block">Expense Category</button>
-            <button class="btn btn-outline-warning btn-block">Income Category</button>
-
+        <div class="box-element col-md-10 mt-2 ml-2">
             <h3 style="color: indigo;" class="ml-5 mt-3">My Account</h3>
             <hr style="background-color: rgb(92, 89, 89);">
             <p><strong>Username: </strong>Lite_book</p>
@@ -55,7 +72,13 @@
     </div>
 </div>
 
+<canvas id="myChart" width="300" height="100"></canvas>
+
 <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
     .box-element{
         background-color: rgb(255, 255, 255);
         color: rgb(0, 0, 0);
@@ -78,6 +101,9 @@
         margin-top: 2px;
         color: teal;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .atag{
+        text-decoration-color: rgb(0, 0, 0);
     }
 </style>
 

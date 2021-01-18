@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block title %}Graph Page{% endblock %}
+
+{% block content %}
+
+<div class="bg">
+    <div class="container">
+        <h1 class="header">Income Inflow Graph</h1><hr>
+        <canvas id="myChart" width="400" height="120"></canvas>
+    </div>
+    <div class="container">
+        <h1 class="header">Expense Inflow Graph</h1><hr>
+        <canvas id="myChart2" width="400" height="120"></canvas>
+    </div>
+</div>
+
+<style>
+    .bg {
+        background-color: rgb(248, 248, 248);
+    }
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .box-element{
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        text-shadow: 5em;
+        box-shadow: hsl(0, 0%, 85%) 0 0 10px;
+        border-radius: 4px;
+        padding: 10px;
+    }
+    .box{
+        justify-content: center;
+        padding: 16px 16px 0;
+        min-height: 70vh;
+    }
+    .ctgr-brnchs:hover {
+        background-color: yellow;
+        color: teal;
+    }
+    .DashBoard{
+        margin-left: 11em;
+        margin-top: 2px;
+        color: teal;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .atag{
+        text-decoration-color: rgb(0, 0, 0);
+    }
+    .header {
+        text-align: center;
+        color: purple;
+    }
+</style>
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+    /* ----------------Income Inflow graph ---------------------*/
+    $(document).ready(function(){
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: [{% for income in add_amount %}'{{income.title}}',{% endfor %}],
+                datasets: [{
+                    label: 'Income Inflow Graph',
+                    data: [{% for income in add_amount %}'{{income.amount}}',{% endfor %}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+    })
+
+
+/* ----------------Expense Inflow graph ---------------------*/
+    $(document).ready(function(){
+        var ctx = document.getElementById('myChart2').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: [{% for income in expense %}'{{income.title}}',{% endfor %}],
+                datasets: [{
+                    label: 'Income Inflow Graph',
+                    data: [{% for income in expense %}'{{income.amount}}',{% endfor %}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+    })
+</script>
+
+{% endblock %}
